@@ -12,4 +12,4 @@ Copy the \*.lang files:
     chmod 644 /usr/share/gtksourceview-3.0/language-specs/docker.lang
     
 
-####### Note: Replace docker.lang with the actual name of the config file you have copied
+###### Note: Replace docker.lang with the actual name of the config file you have copied
