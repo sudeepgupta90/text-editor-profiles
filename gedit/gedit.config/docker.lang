@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Authors: Jasper van den Bosch <jasperb@uw.edu>, 
+ Thomas F. Duellmann <t.duellmann@gmx.de>
+ Copyright (C) 2007 Nobody
+ 
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Library General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later version.
+ 
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Library General Public License for more details.
+ 
+ You should have received a copy of the GNU Library General Public
+ License along with this library; if not, write to the
+ Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ Boston, MA 02111-1307, USA.
+-->
+<language id="docker" _name="Dockerfile" version="2.0" _section="Scripts">
+    <metadata>
+        <property name="mimetypes">application/docker;text/docker</property>
+        <property name="globs">Dockerfile</property>
+    </metadata>
+ 
+    <styles>
+        <style id="docker-keyword" _name="Docker Keyword" map-to="def:keyword"/>
+        <style id="docker-comment" _name="Comment" map-to="def:comment"/>
+        <style id="string" _name="String" map-to="def:string"/>
+        <style id="char" _name="Character" map-to="def:string"/>
+    </styles>
+
+    <definitions>
+        <context id="keywords" style-ref="docker-keyword">
+            <keyword>FROM</keyword>
+            <keyword>MAINTAINER</keyword>
+            <keyword>RUN</keyword>
+            <keyword>ADD</keyword>
+            <keyword>CMD</keyword>
+            <keyword>LABEL</keyword>
+            <keyword>COPY</keyword>
+            <keyword>ENTRYPOINT</keyword>
+            <keyword>EXPOSE</keyword>
+            <keyword>ENV</keyword>
+            <keyword>VOLUME</keyword>
+            <keyword>USER</keyword>
+            <keyword>WORKDIR</keyword>
+            <keyword>ARG</keyword>
+            <keyword>ONBUILD</keyword>
+            <keyword>STOPSIGNAL</keyword>
+            <keyword>HEALTHCHECK</keyword>
+            <keyword>SHELL</keyword>
+        </context>
+
+        <context id="comment" end-at-line-end="true" style-ref="docker-comment">
+          <start>#</start>
+          <end>$</end>
+        </context>
+
+        <context id="string" style-ref="string" end-at-line-end="true">
+            <start>L?"</start>
+            <end>"</end>
+        </context>
+
+        <context id="char" style-ref="string" end-at-line-end="true">
+            <start>L?'</start>
+            <end>'</end>
+        </context>
+
+        <context id="docker">
+            <include>
+                <context ref="keywords"/>
+                <context ref="comment"/>
+                <context ref="string"/>
+                <context ref="char"/>
+            </include>
+        </context>
+    </definitions>
+</language>
